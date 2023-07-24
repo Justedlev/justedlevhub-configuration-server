@@ -1,0 +1,27 @@
+server:
+  port: 8888
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/./configs
+#        default-profile: dev
+#        git:
+#          default-label: main
+#          uri: ${CONFIG_SERVER_URI}
+eureka:
+  instance:
+    instance-id: ${spring.application.name}
+  client:
+    service-url:
+      default-zone: ${DISCOVERY_HOST}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
